@@ -7,12 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sprout, TrendingUp, AlertTriangle, Droplets } from "lucide-react";
 
 const Dashboard = () => {
-  // Mock dashboard stats
+  // Real stats will be loaded from your database once connected  
   const stats = [
-    { label: "Total Fields", value: "24", icon: Sprout, change: "+2", changeType: "positive" },
-    { label: "Avg Yield", value: "85%", icon: TrendingUp, change: "+5%", changeType: "positive" },
-    { label: "Active Alerts", value: "3", icon: AlertTriangle, change: "-1", changeType: "positive" },
-    { label: "Irrigation Status", value: "92%", icon: Droplets, change: "+8%", changeType: "positive" },
+    { label: "Total Fields", value: "0", icon: Sprout, change: "0", changeType: "neutral" },
+    { label: "Avg Yield", value: "0%", icon: TrendingUp, change: "0%", changeType: "neutral" },
+    { label: "Active Alerts", value: "0", icon: AlertTriangle, change: "0", changeType: "neutral" },
+    { label: "Irrigation Status", value: "0%", icon: Droplets, change: "0%", changeType: "neutral" },
   ];
 
   return (
@@ -35,7 +35,7 @@ const Dashboard = () => {
                     <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>
                     <p className="text-2xl font-bold text-foreground">{stat.value}</p>
                     <div className="flex items-center mt-1">
-                      <span className={`text-sm ${stat.changeType === 'positive' ? 'text-success' : 'text-destructive'}`}>
+                      <span className={`text-sm ${stat.changeType === 'positive' ? 'text-success' : stat.changeType === 'negative' ? 'text-destructive' : 'text-muted-foreground'}`}>
                         {stat.change}
                       </span>
                       <span className="text-xs text-muted-foreground ml-1">vs last month</span>
